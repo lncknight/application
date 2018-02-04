@@ -2,7 +2,6 @@
   "name": "lncknight/label_printer",
   "description": "label printer server/client",
   "require": {
-    "chrisboulton/php-resque": "^1.2",
     "php": "^5.6 || ^7.1"
   },
   "authors": [
