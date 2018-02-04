@@ -1,0 +1,21 @@
+{
+  "name": "lncknight/label_printer",
+  "description": "label printer server/client",
+  "require": {
+    "chrisboulton/php-resque": "^1.2",
+    "php": "^5.6 || ^7.1"
+  },
+  "authors": [
+    {
+      "name": "lawrence.lau",
+      "email": "lncknight@gmail.com"
+    }
+  ],
+  "homepage": "https://lncknight.com/",
+  "license": "BSD-3-Clause",
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  }
+}
