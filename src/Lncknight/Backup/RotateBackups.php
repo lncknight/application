@@ -64,7 +64,7 @@ class RotateBackups {
 		}
 
 		// clear up virtual folder
-//		rrmdir($path);
+		Helper::rrmdir($path);
 
 		return $rs;
 	}
