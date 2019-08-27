@@ -81,8 +81,14 @@ class RotateBackups {
 		
 		if (!isset($date)){
 			$ps = explode('_', $file);
-			$date = date('YmdHis', $ps[0]);
+			if (is_numeric($ps[0])){
+                $date = date('YmdHis', $ps[0]);
+            }
 		}
+		
+		if (!isset($date)){
+		    return $file;
+        }
 		
 		return $date;
 	}
