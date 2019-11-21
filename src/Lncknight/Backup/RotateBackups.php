@@ -28,12 +28,13 @@ class RotateBackups {
 		$path = $this->virtualPath;
 		
 		Helper::createDir($path);
-		
+
 		$filesMap = [];
 		foreach ($files as $file) {
 			$newFilename = $this->getTimestamp(basename($file));
 			$filesMap[$newFilename] = $file;
 			Helper::createDir(dirname($path.$newFilename));
+// print_r($path.$newFilename . "\n");			
 			file_put_contents($path.$newFilename, '');
 		}
 		
@@ -49,7 +50,9 @@ class RotateBackups {
 		$commandStr = implode(' ', $command);
 //\App::getDefault()->logTmp($commandStr);
 		exec($commandStr);
-		
+// print_r([
+// 	$commandStr
+// ]);		
 		$files2 = scandir($path, 1);
 		
 		$files2 = array_filter($files2, function($v){
@@ -74,10 +77,17 @@ class RotateBackups {
 	 * @return false|string
 	 */
 	public function getTimestamp($file){
-		preg_match('/.*-(\d+).*/', $file, $matches);
+		// preg_match('/.*-(\d+).*/', $file, $matches);
+
+		preg_match('/.*(\d{10}+)_.*gitlab/', $file, $matches);
 		if ($matches){
-			$date = date('YmdHis', strtotime(@$matches[1]));
+			$file = date('Ymd_His', @$matches[1]);
 		}
+		
+// print_r([
+// 	$matches
+// ]);
+		return $file;
 		
 		if (!isset($date)){
 			$ps = explode('_', $file);
