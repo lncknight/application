@@ -84,6 +84,12 @@ class RotateBackups {
 			$file = date('Ymd_His', @$matches[1]);
 		}
 		
+		// sm-mongo-uat/20200506_1588791901.tar.gz`
+		preg_match('/.*(\d{8}+)_(\d{10})/', $file, $matches);
+		if ($matches){
+			$file = date('Ymd_His', @$matches[2]);
+		}
+
 // print_r([
 // 	$matches
 // ]);
